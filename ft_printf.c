@@ -25,7 +25,7 @@ int ft_printf(const char *format, ...)
 			p++; // Avança para o caractere após '%'
 			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%'
 			{
-				ft_parse(args, void)
+				ft_parse(args, *p)
 				//const char *str = va_arg(args, const char *);
 				//ft_printf_str("%s", str);
 			}			
