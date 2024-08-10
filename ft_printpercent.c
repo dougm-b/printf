@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printpercent.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: domoreir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 17:36:36 by domoreir          #+#    #+#             */
+/*   Updated: 2024/08/10 17:36:38 by domoreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "printf.h"
+#include "libft.h"
 
-int	ft_printpercent(va_arg(args, unsigned int), format)
+int	ft_printpercent(void)
 {
-	int	c;
-	
-	c = 0;
-	return (c);
+	write (1, '%', 1);
+	return (1);
 }
 
