@@ -37,9 +37,9 @@ int	ft_format(va_list args, const char format)
 int ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int	cont;
+	int	print_cont;
 	
-	cont = 0;
+	print_cont = 0;
 	const char *p = format;
 	va_start(args, format);
 	while (*p) 
@@ -47,20 +47,73 @@ int ft_printf(const char *format, ...)
 		if (*p == '%') 
 		{
 			p++;
-			if (*p == '/0')//ver se for um nulo depois do %, ja valido abaixoque precisa ser uma das letras
+			if (*p == '/0')
 				return (-1);
 			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%'
 			{
-				cont += ft_format(args, *p);	
+				print_cont = ft_format(args, *p);	
 			}
 		}
 		else 
-			cont += ft_printchar(*p);//a passar um ponteiro e funcoa 'e int
+			putchar(*p);
 		p++;
 	}
 	va_end(args);
 	return (print_cont);
 }
+
+// COMENTAR DAQUI PARA BAIXO	
+int ft_printf(const char *format, ...)
+{
+	va_list	args;
+	va_start(args, format);
+
+	const char *p = format;
+	while (*p) 
+	{
+		if (*p == '%') 
+		{
+			p++; // Avança para o caractere após '%'
+			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%'
+			{
+				ft_format(args, *p)
+				//const char *str = va_arg(args, const char *);
+				//ft_printf_str("%s", str);
+			}			
+		/*	if (*p == 's')
+			{
+				const char *str = va_arg(args, const char *);
+				ft_printf_str("%s", str); // aqui ou acima irá a função correspondente para o que você quer realizar : MUDAR ESSA FUNCAO PARA DENTRO DE OUTRA FUNCAO QUE IR'A FAZER A VALIDACAO SE O FORMATO FOR S I D U  OU OUTRO DEVE CHAMAR A FUNCAO QUE DENTRO TERA AS VALIDACOES.
+			}
+			else if (*p == 'd')
+			{
+				int num = va_arg(args, int);
+				printf("%d", num);
+			} */
+		}
+		else 
+			putchar(*p);
+		p++; // Avança para o próximo caractere na string de formato
+	}
+	va_end(args);
+}
+/*
+	va_list		args;
+	int			count;
+	char		*str;
+	
+	count = 0;
+	if (!format || format == '\0')
+		return (0);
+	str = ft_strdup(format);
+	if (!str || *str == '\0')
+		return (0);
+	va_start(args, format);
+	count = ft_parse(str, args);
+	va_end(args);
+	free(str);
+	return (count);
+}*/
 
 int main(void)
 {

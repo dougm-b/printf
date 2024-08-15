@@ -10,24 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "printf.h"
 #include "libft.h"
 
-int	ft_printhex(unsigned int n)
+int	ft_lhex(unsigned int n)
 {
-	int	c;
-	char	*num;
+	int	len;
 
-	c = 0;	
+	len = 0;
+	while (n != 0)
+	{
+		n = n / 16;
+		len ++;
+	}
+	return (len);
+}
+
+void	ft_whex(unsigned int n, const char format)
+{
+	if (n >= 16)
+	{
+		ft_whex(n / 16, format);
+		ft_whex(n % 16, format);
+	}
+	else
+	{
+		if (n <= 9)
+			ft_putchar_fd((n + '0'), 1);
+		else
+		{
+			if (format == 'x' )
+			{	n = (n - 10 + 'a');
+				ft_putchar_fd(n, 1);
+			}
+			if (format == 'X')
+			{
+				n = n - 10 + 'A';
+				ft_putchar_fd(n, 1);
+			}
+		}
+	}
+}
+
+int	ft_printhex(unsigned int n, const char format)
+{
+	int	lenght;
+
+	lenght = 0;
 	if (n == 0)
 		print_length += write(1, "0", 1);
 	else
 	{
-		num = ft_uitoa(n);
-		c =+ ft_printstr(num);
-		free (num);
-	}	
-	return (c);
+		ft_whex(n, format);
+		lenght += ft_lhex(n);
+	}
+	return (lenght);
 }
-

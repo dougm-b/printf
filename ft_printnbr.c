@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "printf.h"
 #include "libft.h"
 
@@ -18,11 +17,10 @@ int	ft_printnbr(int n)
 {
 	int	c;
 	char	*str;
-	
+
 	c = 0;
 	str = ft_itoa(n);
 	c = ft_printstr(str);
 	free(str);
 	return (c);
 }
-

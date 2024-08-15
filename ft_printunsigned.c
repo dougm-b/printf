@@ -10,22 +10,65 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "printf.h"
 #include "libft.h"
 
-int	ft_printunsigned(unsigned long long n))
+int	ft_leni(unsigned int n)
 {
-	int	c;
-	
-	c = 0;
-	return (c);
-	
-	// PRINCIPAL - Ver se o n'umeor 'e 0, se for 0 printa 0.
-	// PRINCIPAL - Chamar uma funcao uitoa
-	// UITOA - igual ao itoa, muda s'o o tipo de variavel e nao tem que considerar resultados negativos.
-	// UITOA chama um num_len para calcular o tamanho do malloc a realizar (penso j'a tyer isso no itoa)
-	//chamar o printstr , pois j'a tem um array
-	
+	size_t	count;
+
+	count = 0;
+	if (n == 0)
+	{
+		count = 1;
+		return (count);
+	}
+	while (n != 0)
+	{
+		count++;
+		n = n / 10;
+	}
+	return (count);
 }
+
+char	ft_uitoa(unsigned int n)
+{
+	char		*str;
+	size_t		len;
+
+	len = ft_leni(n);
+	str = malloc((len * sizeof(char)) + 1);
+	if (str == NULL)
+		return (NULL);
+	str[len] = 0;
+	if (n == 0)
+		str[0] = '0';
+	while (n)
+	{
+		str[--len] = '0' + (n % 10);
+		n = n / 10;
+	}
+	return (str);
+}
+
+int	ft_printunsigned(unsigned long long n)
+{
+	int	length;
+	int	ui;
+
+	if (n == 0)
+		lenght += write(1, "0", 1);
+	else
+	{
+		ui = ft_uitoa(n);
+		lenght += ft_printstr(ui);
+		free(ui);
+	}
+	return (lenght);
+}
+// PRINCIPAL - Ver se o n'umeor 'e 0, se for 0 printa 0.
+// PRINCIPAL - Chamar uma funcao uitoa
+// UITOA - igual ao itoa, muda s'o o tipo de variavel e nao tem que considerar resultados negativos.
+// UITOA chama um num_len para calcular o tamanho do malloc a realizar (penso j'a tyer isso no itoa)
+//chamar o printstr , pois j'a tem um array
 
