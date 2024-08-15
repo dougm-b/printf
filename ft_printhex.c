@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
+#include "ft_printf.h"
 
 int	ft_lhex(unsigned int n)
 {
@@ -39,7 +38,7 @@ void	ft_whex(unsigned int n, const char format)
 			ft_putchar_fd((n + '0'), 1);
 		else
 		{
-			if (format == 'x' )
+			if (format == 'x')
 			{	n = (n - 10 + 'a');
 				ft_putchar_fd(n, 1);
 			}

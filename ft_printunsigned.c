@@ -6,11 +6,11 @@
 /*   By: domoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 17:37:08 by domoreir          #+#    #+#             */
-/*   Updated: 2024/08/10 17:37:11 by domoreir         ###   ########.fr       */
+/*   Updated: 2024/08/16 00:28:59 by domoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_lenui(unsigned int n)
 {
@@ -52,9 +52,9 @@ char	*ft_uitoa(unsigned int n)
 
 int	ft_printunsigned(unsigned long long n)
 {
-	int	length;
+	int		length;
 	char	*ui;
-	
+
 	length = 0;
 	if (n == 0)
 		length += write(1, "0", 1);
@@ -66,9 +66,3 @@ int	ft_printunsigned(unsigned long long n)
 	}
 	return (length);
 }
-// PRINCIPAL - Ver se o n'umeor 'e 0, se for 0 printa 0.
-// PRINCIPAL - Chamar uma funcao uitoa
-// UITOA - igual ao itoa, muda s'o o tipo de variavel e nao tem que considerar resultados negativos.
-// UITOA chama um num_len para calcular o tamanho do malloc a realizar (penso j'a tyer isso no itoa)
-//chamar o printstr , pois j'a tem um array
-

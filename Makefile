@@ -21,13 +21,14 @@ RM = rm -f
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_PATH		=	./libft
-LIBFT			=	$(LIBFT_PATH)/libft.a
+LIBFT			=	libft/libft.a
 
-${NAME}: ${OBJS}
-	${LIBC} ${NAME} ${OBJS} -o ${NAME}
+${NAME}: ${LIBFT} ${OBJS}
+	cp ${LIBFT} ${NAME}
+	${LIBC} ${NAME} ${OBJS}
 	
 $(LIBFT):
-	make -C $(LIBFT_PATH) all
+	make -C libft
 					
 					
 %.o: %.c

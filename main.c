@@ -6,14 +6,21 @@
 /*   By: domoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 23:24:36 by domoreir          #+#    #+#             */
-/*   Updated: 2024/08/15 23:31:53 by domoreir         ###   ########.fr       */
+/*   Updated: 2024/08/15 23:37:45 by domoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	main(void)
 {
-	ft_printf("tua mae\n");
+	int	ret;
+	
+	ret = 0;
+	ret = ft_printf("tua mae\n");
+	ret = ft_printf("23267764\n");
+	ret = ft_printf("%d\n", 958340);
+	ret = ft_printf("%zu\n", 957958340);
+	ret = ft_printf("%%\n", 10,44);		
 	return(0);
 }
