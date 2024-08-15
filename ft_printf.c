@@ -1,4 +1,4 @@
-**/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 int	ft_format(va_list args, const char format)
 {
-	int	print_lenght;
+	int	print_length;
 	
-	print_lenght = 0;
+	print_length = 0;
 	if (format == 'c')
 		print_length += ft_printchar(va_arg(args, int));
 	else if (format == 's')
@@ -28,9 +28,9 @@ int	ft_format(va_list args, const char format)
 	else if (format == 'u')
 		print_length += ft_printunsigned(va_arg(args, unsigned long long));
 	else if (format == 'x')
-		print_length += ft_printhex(va_arg(args, unsigned int));
+		print_length += ft_printhex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		print_length += ft_printpercent(va_arg(args, unsigned int), format);
+		print_length += ft_printpercent();
 	return (print_length);
 }
 
@@ -47,9 +47,9 @@ int ft_printf(const char *format, ...)
 		if (*p == '%') 
 		{
 			p++;
-			if (*p == '/0')//ver se for um nulo depois do %, ja valido abaixoque precisa ser uma das letras
+			if (*p == '\0')//ver se for um nulo depois do %, ja valido abaixoque precisa ser uma das letras
 				return (-1);
-			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%'
+			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%')
 			{
 				cont += ft_format(args, *p);	
 			}
@@ -59,12 +59,11 @@ int ft_printf(const char *format, ...)
 		p++;
 	}
 	va_end(args);
-	return (print_cont);
+	return (cont);
 }
-
+/*
 int main(void)
 {
       ft_printf("Testing ft_printf!");
       return (0);
-}
-//funcoes permitidas: malloc, free, write, va_start, va_arg, va_copy, va_end
+}*/

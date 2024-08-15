@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
+
 
 int	ft_lhex(unsigned int n)
 {
@@ -54,15 +54,15 @@ void	ft_whex(unsigned int n, const char format)
 
 int	ft_printhex(unsigned int n, const char format)
 {
-	int	lenght;
+	int	length;
 
-	lenght = 0;
+	length = 0;
 	if (n == 0)
-		print_length += write(1, "0", 1);
+		length += write(1, "0", 1);
 	else
 	{
 		ft_whex(n, format);
-		lenght += ft_lhex(n);
+		length += ft_lhex(n);
 	}
-	return (lenght);
+	return (length);
 }

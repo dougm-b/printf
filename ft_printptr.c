@@ -12,12 +12,11 @@
 
 
 #include "printf.h"
-#include "libft.h"
 
 
 int	ft_lptr(unsigned int ptr) //okappa
 {
-	int	len:
+	int	len;
 	
 	len = 0;
 	
@@ -33,8 +32,8 @@ void	ft_wptr(unsigned int ptr)
 {
 	if (ptr >= 16)
 	{
-		ft_whex(ptr / 16, format);
-		ft_whex(ptr % 16, format);
+		ft_wptr(ptr / 16);
+		ft_wptr(ptr % 16);
 	}
 	else
 	{
@@ -42,26 +41,24 @@ void	ft_wptr(unsigned int ptr)
 			ft_putchar_fd((ptr + '0'), 1);
 		else
 		{
-			if (format == 'x')
-			{	ptr = ptr - 10 + 'a';
-				ft_putchar_fd(ptr, 1);
-			}
+			ptr = ptr - 10 + 'a';
+			ft_putchar_fd(ptr, 1);
 		}
 	}
 }
 
 int	ft_printptr(unsigned long long ptr)
 {
-	int	lenght;
+	int	length;
 	
-	lenght = 0;
-	lenght += write(1, "0x", 2);
-	if (n == 0)
-		print_length += write(1, "0", 1);
+	length = 0;
+	length += write(1, "0x", 2);
+	if (ptr == 0)
+		length += write(1, "0", 1);
 	else
 	{
-		ft_whex(ptr);
-		lenght += ft_lhex(n);
+		ft_wptr(ptr);
+		length += ft_lptr(ptr);
 	}	
-	return (lenght);
+	return (length);
 }

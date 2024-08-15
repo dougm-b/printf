@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: domoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,21 +13,18 @@
 #ifndef PRINTF_H
 # define PRINTF_H
 
+# include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include "libft/libft.h"
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-int	ft_printchar(va_arg(args, int));
-int	ft_printstr(va_arg(args, char *));
-int	ft_printptr(va_arg(args, unsigned long long));		
-int	ft_printnbr(va_arg(args, int));
-int	ft_printunsigned(va_arg(args, unsigned long long));
-int	ft_printhex(va_arg(args, unsigned int));
-int	ft_printpercent(va_arg(args, unsigned int), format);
+int	ft_printchar(int c);
+int	ft_printstr(char *str);
+int	ft_printptr(unsigned long long ptr);	
+int	ft_printnbr(int n);
+int	ft_printunsigned(unsigned long long n);
+int	ft_printhex(unsigned int n, const char format);
+int	ft_printpercent(void);
 		
 #endif

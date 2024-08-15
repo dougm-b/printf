@@ -12,16 +12,24 @@
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c ft_printchar.c ft_printhex.c ft_printnbr.c /
+SRCS = ft_printf.c ft_printchar.c ft_printhex.c ft_printnbr.c \
 ft_printpercent.c ft_printptr.c ft_printstr.c ft_printunsigned.c
     
-NAME = libft.a
+NAME = libftprintf.a
 LIBC = ar rcs
 RM = rm -f
 OBJS = $(SRCS:.c=.o)
 
+LIBFT_PATH		=	./libft
+LIBFT			=	$(LIBFT_PATH)/libft.a
+
 ${NAME}: ${OBJS}
-	${LIBC} ${NAME} ${OBJS}
+	${LIBC} ${NAME} ${OBJS} -o ${NAME}
+	
+$(LIBFT):
+	make -C $(LIBFT_PATH) all
+					
+					
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
     
@@ -33,4 +41,4 @@ fclean: clean
 	${RM} ${NAME}
 re: fclean all
 
-.PHONY : all clean fclean re bonus rebonus
+.PHONY : all clean fclean re libft

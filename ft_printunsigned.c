@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 
-int	ft_leni(unsigned int n)
+int	ft_lenui(unsigned int n)
 {
 	size_t	count;
 
@@ -31,12 +30,12 @@ int	ft_leni(unsigned int n)
 	return (count);
 }
 
-char	ft_uitoa(unsigned int n)
+char	*ft_uitoa(unsigned int n)
 {
 	char		*str;
 	size_t		len;
 
-	len = ft_leni(n);
+	len = ft_lenui(n);
 	str = malloc((len * sizeof(char)) + 1);
 	if (str == NULL)
 		return (NULL);
@@ -54,17 +53,18 @@ char	ft_uitoa(unsigned int n)
 int	ft_printunsigned(unsigned long long n)
 {
 	int	length;
-	int	ui;
-
+	char	*ui;
+	
+	length = 0;
 	if (n == 0)
-		lenght += write(1, "0", 1);
+		length += write(1, "0", 1);
 	else
 	{
 		ui = ft_uitoa(n);
-		lenght += ft_printstr(ui);
+		length += ft_printstr(ui);
 		free(ui);
 	}
-	return (lenght);
+	return (length);
 }
 // PRINCIPAL - Ver se o n'umeor 'e 0, se for 0 printa 0.
 // PRINCIPAL - Chamar uma funcao uitoa

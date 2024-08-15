@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: domoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 17:36:24 by domoreir          #+#    #+#             */
-/*   Updated: 2024/08/10 17:36:26 by domoreir         ###   ########.fr       */
+/*   Created: 2024/08/15 23:24:36 by domoreir          #+#    #+#             */
+/*   Updated: 2024/08/15 23:31:53 by domoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-
-int	ft_printnbr(int n)
+int	main(void)
 {
-	int	c;
-	char	*str;
-
-	c = 0;
-	str = ft_itoa(n);
-	c = ft_printstr(str);
-	free(str);
-	return (c);
+	ft_printf("tua mae\n");
+	return(0);
 }
