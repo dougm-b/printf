@@ -15,7 +15,7 @@
 int	ft_format(va_list args, const char format)
 {
 	int	print_length;
-	
+
 	print_length = 0;
 	if (format == 'c')
 		print_length += ft_printchar(va_arg(args, int));
@@ -27,35 +27,35 @@ int	ft_format(va_list args, const char format)
 		print_length += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
 		print_length += ft_printunsigned(va_arg(args, unsigned long long));
-	else if (format == 'x')
+	else if (format == 'x' || format == 'X')
 		print_length += ft_printhex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		print_length += ft_printpercent();
 	return (print_length);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-	int	cont;
-	
+	va_list		args;
+	int			cont;
+	const char	*p;
+
 	cont = 0;
-	const char *p = format;
+	p = format;
 	va_start(args, format);
-	while (*p) 
+	while (*p)
 	{
-		if (*p == '%') 
+		if (*p == '%')
 		{
 			p++;
-			if (*p == '\0')//ver se for um nulo depois do %, ja valido abaixoque precisa ser uma das letras
+			if (*p == '\0')
 				return (-1);
-			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p' || *p == 'u' || *p == 'x' || *p == 'X' || *p == '%')
-			{
-				cont += ft_format(args, *p);	
-			}
+			if (*p == 's' || *p == 'c' || *p == 'd' || *p == 'i' || *p == 'p'\
+			|| *p == 'u' || *p == 'x' || *p == 'X' || *p == '%')
+				cont += ft_format(args, *p);
 		}
-		else 
-			cont += ft_printchar(*p);//a passar um ponteiro e funcoa 'e int
+		else
+			cont += ft_printchar(*p);
 		p++;
 	}
 	va_end(args);

@@ -12,10 +12,9 @@
 
 #include "ft_printf.h"
 
-
 int	ft_printnbr(int n)
 {
-	int	c;
+	int		c;
 	char	*str;
 
 	c = 0;

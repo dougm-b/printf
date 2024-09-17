@@ -10,25 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-
-int	ft_lptr(unsigned int ptr) //okappa
+int	ft_lptr(unsigned long long ptr)
 {
 	int	len;
-	
+
 	len = 0;
-	
+	if (ptr == 0)
+		return (1);
 	while (ptr != 0)
 	{
 		ptr = ptr / 16;
 		len ++;
 	}
-	return(len);
+	return (len);
 }
 
-void	ft_wptr(unsigned int ptr)
+void	ft_wptr(unsigned long long ptr)
 {
 	if (ptr >= 16)
 	{
@@ -37,28 +36,35 @@ void	ft_wptr(unsigned int ptr)
 	}
 	else
 	{
-		if (ptr <= 9)	
+		if (ptr <= 9)
 			ft_putchar_fd((ptr + '0'), 1);
 		else
 		{
-			ptr = ptr - 10 + 'a';
-			ft_putchar_fd(ptr, 1);
+			ft_putchar_fd((ptr - 10 + 'a'), 1);
 		}
 	}
 }
 
 int	ft_printptr(unsigned long long ptr)
 {
-	int	length;
-	
+	int		length;
+	int		i;
+	char	*a;
+
 	length = 0;
-	length += write(1, "0x", 2);
 	if (ptr == 0)
-		length += write(1, "0", 1);
-	else
 	{
-		ft_wptr(ptr);
-		length += ft_lptr(ptr);
-	}	
+		a = "(nil)";
+		i = 0;
+		while (a[i])
+		{
+			ft_printchar(a[i]);
+			i++;
+		}
+		return (5);
+	}
+	length += write(1, "0x", 2);
+	ft_wptr(ptr);
+	length += ft_lptr(ptr);
 	return (length);
 }

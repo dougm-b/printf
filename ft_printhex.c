@@ -39,7 +39,8 @@ void	ft_whex(unsigned int n, const char format)
 		else
 		{
 			if (format == 'x')
-			{	n = (n - 10 + 'a');
+			{
+				n = (n - 10 + 'a');
 				ft_putchar_fd(n, 1);
 			}
 			if (format == 'X')

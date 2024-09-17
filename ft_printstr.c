@@ -10,18 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 int	ft_strnull(char *str)
 {
 	int	c;
-	
+
 	c = 0;
-	while(str[c])
+	while (str[c])
 	{
 		write (1, &str[c], 1);
-		c++; 
+		c++;
 	}
 	return (c);
 }
@@ -29,18 +28,17 @@ int	ft_strnull(char *str)
 int	ft_printstr(char *str)
 {
 	int	c;
-	
+
 	c = 0;
 	if (str == NULL)
 	{
 		ft_strnull("(null)");
-		return(6);
+		return (6);
 	}
-	while(str[c])
+	while (str[c])
 	{
 		write (1, &str[c], 1);
-		c++; 
+		c++;
 	}
 	return (c);
 }
-
